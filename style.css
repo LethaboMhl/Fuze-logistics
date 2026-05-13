@@ -42,7 +42,7 @@ header{
     width: 55px;
     height: auto;
     object-fit: contain;
-    max-width: 100%;
+    max-width: 10%;
 }
 
 .logo{
