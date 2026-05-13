@@ -98,16 +98,19 @@ nav a:hover{
 
 /* LEFT SIDE TEXT */
 .about-text{
-    flex: 1;
-    min-width: 0;
-    max-width: 55%;
+    
+    
+    
     color: #ccc;
+     flex: 1;
+    max-width: 600px;   /* THIS fixes the overflow problem */
+    min-width: 0;
 }
 
 /* RIGHT SIDE IMAGE */
 .about-image{
     flex: 1;
-    max-width: 45%;
+    max-width: 400px;
     display: flex;
     justify-content: flex-end;
 }
