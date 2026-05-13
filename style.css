@@ -88,33 +88,41 @@ nav a:hover{
 
 /* ABOUT */
 .about{
-    
+    padding: 120px 8%;
+    background: #111;
+}
+
+.about-vertical{
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 60px;
-    padding: 120px 8%;
-    background: #111;
-    flex-wrap:wrap;
 }
 
 /* LEFT SIDE TEXT */
-.about-text{
-    
-    
-    
+.vertical-text{
+    flex: 1;
     color: #ccc;
-     flex: 1 1 45%;
     min-width: 0;
+}
+
+.vertical-text h2{
+    font-size: 36px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+.vertical-text p{
+    line-height: 1.8;
+    margin-bottom: 15px;
 }
 
 /* RIGHT SIDE IMAGE */
 .about-image{
-    flex: 1 1 45%;
-    max-width: 400px;
+    flex: 0 0 auto;
     display: flex;
     justify-content: flex-end;
-    align-items:flex-start;
+    align-items: flex-start;
 }
 
 .about-image img{
@@ -246,7 +254,7 @@ footer p{
         font-size: 18px;
     }
 
-    .about,
+    .about-vertical,
     .fleet{
         flex-direction: column;
     }
