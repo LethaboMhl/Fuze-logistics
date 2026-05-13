@@ -93,13 +93,13 @@ nav a:hover{
 
 .about{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .about-text{
-    display: flex;
-    flex-direction: column;
+    display: block;
+    flex: 1;
 }
 
 .about-text h2{
