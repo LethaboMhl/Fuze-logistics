@@ -101,6 +101,7 @@ nav a:hover{
 .about-text
 {
     display: flex;
+    flex-direction: column;
 }
 
 .about-text h2{
@@ -113,7 +114,6 @@ nav a:hover{
     margin-bottom: 15px;
     color: #cccccc;
 }
-
 
 
 
