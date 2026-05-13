@@ -25,15 +25,12 @@ header{
 }
 
 .logo{
-    
-    top: 10px;
-    left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: red;
+    letter-spacing: 2px;
 }
 
-.logo img{
- height: 40px;   /* adjust size here */
-    width: auto;
-}
 
 
 
