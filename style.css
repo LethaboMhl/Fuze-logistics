@@ -92,30 +92,21 @@ nav a:hover{
 /* ABOUT */
 
 .about{
-   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
     padding: 120px 8%;
-    background: #111111;
-    
-}
-.about-vertical h2{
-    font-size: 48px;
-    color: red;
+    background: #111;
 }
 
-/* VERTICAL TEXT */
-.vertical-text{
-    writing-mode: vertical-rl;   /* makes text vertical */
-    transform: rotate(180deg);   /* flips it to read top-down properly */
-    white-space: normal;
-    line-height: 1.6;
-    font-size: 16px;
+/* TEXT SIDE */
+.about-text{
+    flex: 1;
     color: #ccc;
-    max-height: 500px;
 }
 
-
-
-
+/* IMAGE SIDE */
 .about-image{
     flex: 1;
 }
@@ -123,7 +114,8 @@ nav a:hover{
 .about-image img{
     width: 100%;
     border-radius: 10px;
-    border: 3px solid red;
+    border: 2px solid red;
+    object-fit: cover;
 }
 
 /* SERVICES */
