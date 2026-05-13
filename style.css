@@ -97,21 +97,20 @@ nav a:hover{
     background: #111111;
     
 }
-
-.about-text
-{
-     display: block;
-}
-
-.about-text h2{
+.about-vertical h2{
     font-size: 48px;
     color: red;
-    margin-bottom: 25px;
 }
-.about-text p{
-    line-height: 1.8;
-    margin-bottom: 15px;
-    color: #cccccc;
+
+/* VERTICAL TEXT */
+.vertical-text{
+    writing-mode: vertical-rl;   /* makes text vertical */
+    transform: rotate(180deg);   /* flips it to read top-down properly */
+    white-space: normal;
+    line-height: 1.6;
+    font-size: 16px;
+    color: #ccc;
+    max-height: 500px;
 }
 
 
