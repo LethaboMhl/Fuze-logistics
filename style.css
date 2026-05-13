@@ -101,7 +101,7 @@ nav a:hover{
 }
 
 .about-text{
-    flex: 1;
+    display: block;
 }
 
 .about-text h2{
