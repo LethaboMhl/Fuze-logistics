@@ -21,7 +21,7 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 10px 40px;
-    background: rgb(10,10,10);
+    background: rgb(0,0,0);
 }
 
 .logo{
@@ -95,7 +95,7 @@ nav a:hover{
    
     padding: 120px 8%;
     background: #111111;
-    display: flex;
+    
 }
 
 .about-text
