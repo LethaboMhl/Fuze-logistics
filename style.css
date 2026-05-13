@@ -100,8 +100,7 @@ nav a:hover{
 
 .about-text
 {
-    display: flex;
-    flex-direction: column;
+     display: block;
 }
 
 .about-text h2{
