@@ -96,6 +96,7 @@ nav a:hover{
     padding: 120px 8%;
     background: #111;
     flex-wrap: nowrap; /* IMPORTANT: prevents stacking */
+    min-width: 0;
 }
 .about-text{
    flex: 1;
