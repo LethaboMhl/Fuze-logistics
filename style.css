@@ -39,10 +39,8 @@ header{
 }
 
 .header-image img{
-    width: 5px;
-    height: 5px;
-    position: right;
-    
+   max-height: 45px;
+    width: auto;
 }
 
 .logo{
