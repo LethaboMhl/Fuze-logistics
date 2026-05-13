@@ -39,9 +39,10 @@ header{
 }
 
 .header-image img{
-    width: 80px;
+    width: 55px;
     height: auto;
     object-fit: contain;
+    max-width: 100%;
 }
 
 .logo{
