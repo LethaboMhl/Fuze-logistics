@@ -28,6 +28,21 @@ header{
     z-index: 1000;
     border-bottom: 2px solid red;
 }
+header{
+    position: relative;
+}
+
+.header-image{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.header-image img{
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+}
 
 .logo{
     font-size: 28px;
