@@ -41,6 +41,7 @@ header{
 .logo img{
    max-height: 45px !important;
     width: auto !important;
+    position: right;
 }
 
 
