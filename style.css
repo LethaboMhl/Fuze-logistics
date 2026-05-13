@@ -41,8 +41,8 @@ header{
 .header-image img{
     width: 5px;
     height: 5px;
-    object-fit: contain;
-    max-width: 10%;
+    position: right;
+    
 }
 
 .logo{
