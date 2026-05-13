@@ -43,12 +43,7 @@ header{
     width: auto !important;
 }
 
-.logo{
-    font-size: 28px;
-    font-weight: bold;
-    color: red;
-    letter-spacing: 2px;
-}
+
 
 nav a{
     color: white;
