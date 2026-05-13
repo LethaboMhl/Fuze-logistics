@@ -110,9 +110,15 @@ nav a:hover{
     margin-bottom: 25px;
 }
 
+.about-text h3{
+    color: red;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
 .about-text p{
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #cccccc;
 }
 
