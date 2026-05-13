@@ -93,15 +93,12 @@ nav a:hover{
 
 .about{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 120px 8%;
-    gap: 60px;
-    background: #111111;
+    flex-direction: row;
 }
 
 .about-text{
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .about-text h2{
