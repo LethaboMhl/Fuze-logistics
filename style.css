@@ -88,6 +88,7 @@ nav a:hover{
 
 /* ABOUT */
 .about{
+    
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -102,14 +103,13 @@ nav a:hover{
     
     
     color: #ccc;
-     flex: 1;
-    max-width: 600px;   /* THIS fixes the overflow problem */
+     flex: 0 1 50%;
     min-width: 0;
 }
 
 /* RIGHT SIDE IMAGE */
 .about-image{
-    flex: 1;
+    flex: 0 1 50%;
     max-width: 400px;
     display: flex;
     justify-content: flex-end;
