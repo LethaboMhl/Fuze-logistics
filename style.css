@@ -32,13 +32,13 @@ header{
     position: relative;
 }
 
-.header-image{
+.logo{
     position: absolute;
     top: 10px;
     right: 20px;
 }
 
-.header-image img{
+.logo img{
    max-height: 45px;
     width: auto;
 }
