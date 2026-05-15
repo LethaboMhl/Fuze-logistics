@@ -13,7 +13,19 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+<script>
+const video = document.querySelector(".hover-video");
+const container = document.querySelector(".video-container");
 
+container.addEventListener("mouseenter", () => {
+    video.play();
+});
+
+container.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+});
+</script>
 <body>
 
 <!-- ================= NAVBAR ================= -->
