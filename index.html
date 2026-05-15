@@ -19,25 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".video-container");
 
     if (video && container) {
-        // Desktop: Hover to play
-        container.addEventListener("mouseenter", () => {
-            video.play();
-        });
-
-        container.addEventListener("mouseleave", () => {
-            video.pause();
-            video.currentTime = 0;
-        });
-
-        // Mobile: Tap to play/pause
-        container.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (video.paused) {
+        // Desktop: Hover to play/pause
+        if (window.innerWidth > 1000) {
+            container.addEventListener("mouseenter", () => {
                 video.play();
-            } else {
+            });
+
+            container.addEventListener("mouseleave", () => {
                 video.pause();
-            }
-        });
+                video.currentTime = 0;
+            });
+        } else {
+            // Mobile: Add controls attribute dynamically
+            video.controls = true;
+        }
     }
 });
 </script>
@@ -261,12 +256,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- VIDEO HOVER BOX -->
         <div class="showcase-box video-container">
 
-            <video class="hover-video" muted playsinline controls>
+            <video class="hover-video" muted playsinline>
                 <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-
-            <div class="mobile-play-hint">Tap to play</div>
 
         </div>
 
