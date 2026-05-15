@@ -225,16 +225,22 @@
 
     <div class="showcase-grid">
 
-        <!-- ADD SHOWCASE IMAGES HERE -->
-
+        <!-- IMAGE 1 -->
         <div class="showcase-box">
             <img src="placeholder1.jpg" alt="Fleet Showcase">
         </div>
 
-        <div class="showcase-box">
-            <img src="placeholder2.jpg" alt="Fleet Showcase">
+        <!-- VIDEO HOVER BOX (NEW) -->
+        <div class="showcase-box video-container">
+
+            <video class="hover-video" muted loop>
+                <source src="your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
         </div>
 
+        <!-- IMAGE 3 -->
         <div class="showcase-box">
             <img src="placeholder3.jpg" alt="Fleet Showcase">
         </div>
@@ -242,6 +248,709 @@
     </div>
 
 </section>
+🎨 ADD THIS TO YOUR style.css
+/* VIDEO CONTAINER */
+.video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* VIDEO STYLE */
+.hover-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.video-container:hover .hover-video {
+    transform: scale(1.05);
+}
+⚡ ADD THIS BEFORE </body> (IMPORTANT)
+<script>
+const video = document.querySelector(".hover-video");
+const container = document.querySelector(".video-container");
+
+container.addEventListener("mouseenter", () => {
+    video.play();
+});
+
+container.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+});
+</script>
+🚀 What you now have
+Video sits inside your fleet showcase grid
+Plays automatically on hover
+Pauses + resets when mouse leaves
+Matches your existing design style
+⚠️ Important note
+
+Replace:
+
+your-video.mp4
+
+with your actual video file path, e.g.:
+
+videos/fleet-showcase.mp4
+
+If you want next upgrades, I can help you:
+
+make it play without resetting (smooth loop hover reel style)
+add multiple hover videos in the grid
+turn this into a modern TikTok-style auto-play showcase section
+or 
+make it mobile-friendly touch play instead of hover
+
+Just tell me 👍
+
+and this css
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background: #0d0d0d;
+    color: #f5f5f5;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 8%;
+
+    background: rgba(0,0,0,0.92);
+
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img{
+    height: 45px;
+    width: auto;
+}
+
+.logo h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a{
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #8b0000;
+}
+
+.quote-btn{
+    background: #8b0000;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: 0.3s ease;
+}
+
+.quote-btn:hover{
+    background: transparent;
+    border-color: #8b0000;
+    color: #ffffff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.72);
+}
+
+.hero-content{
+    position: absolute;
+    top: 50%;
+    left: 8%;
+
+    transform: translateY(-50%);
+
+    max-width: 750px;
+}
+
+.hero-tag{
+    color: #8b0000;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-content h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 72px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero-content p{
+    color: #b8b8b8;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+/* ================= SECTION SETTINGS ================= */
+
+section{
+    padding: 120px 8%;
+}
+
+.section-tag{
+    color: #8b0000;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+section h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+
+    background: #111111;
+}
+
+.about-text{
+    flex: 1;
+}
+
+.about-text p{
+    color: #b8b8b8;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.about-image{
+    flex: 1;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-image img{
+    width: 100%;
+    max-width: 500px;
+
+    border-radius: 10px;
+
+    border: 2px solid #8b0000;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+    text-align: center;
+}
+
+.service-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.service-card{
+    background: #161616;
+
+    padding: 40px;
+
+    border: 1px solid #242424;
+
+    transition: 0.3s;
+}
+
+.service-card:hover{
+    transform: translateY(-10px);
+
+    border-color: #8b0000;
+}
+
+.service-card h3{
+    font-family: 'Poppins', sans-serif;
+
+    color: white;
+
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+.service-card p{
+    color: #b8b8b8;
+
+    line-height: 1.8;
+}
+
+/* ================= FLEET ================= */
+
+.fleet{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 80px;
+
+    background: #111111;
+}
+
+.fleet-text{
+    flex: 1;
+}
+
+.fleet-text p{
+    color: #b8b8b8;
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+.fleet-text ul{
+    margin-top: 25px;
+}
+
+.fleet-text li{
+    margin-bottom: 15px;
+
+    color: #f5f5f5;
+}
+
+.fleet-image{
+    flex: 1;
+}
+
+.fleet-image img{
+    width: 100%;
+
+    border-radius: 10px;
+
+    border: 2px solid #8b0000;
+}
+
+/* ================= SHOWCASE ================= */
+
+.showcase{
+    text-align: center;
+}
+
+.showcase-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.showcase-box{
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    border: 1px solid #2a2a2a;
+}
+
+.showcase-box img{
+    width: 100%;
+
+    height: 320px;
+
+    object-fit: cover;
+
+    transition: 0.4s;
+}
+
+.showcase-box:hover img{
+    transform: scale(1.08);
+}
+
+/* ================= WHY US ================= */
+
+.why-us{
+    background: #111111;
+
+    text-align: center;
+}
+
+.why-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.why-card{
+    background: #161616;
+
+    padding: 40px;
+
+    border: 1px solid #242424;
+}
+
+.why-card h3{
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+.why-card p{
+    color: #b8b8b8;
+
+    line-height: 1.8;
+}
+
+/* ================= AREAS ================= */
+
+.areas{
+    text-align: center;
+}
+
+.area-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.area-card{
+    background: #161616;
+
+    padding: 50px;
+
+    border: 1px solid #242424;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+
+    gap: 30px;
+
+    background: #111111;
+}
+
+.stat-box{
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background: #161616;
+}
+
+.stat-box h2{
+    color: #8b0000;
+
+    font-size: 60px;
+
+    margin-bottom: 10px;
+}
+
+.stat-box p{
+    color: #b8b8b8;
+}
+
+/* ================= PARTNERS ================= */
+
+.partners{
+    text-align: center;
+}
+
+.partner-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.partner-card{
+    background: #161616;
+
+    padding: 60px;
+
+    border: 1px solid #242424;
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonials{
+    background: #111111;
+
+    text-align: center;
+}
+
+.testimonial-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+
+    gap: 30px;
+
+    margin-top: 60px;
+}
+
+.testimonial-card{
+    background: #161616;
+
+    padding: 40px;
+
+    border-left: 4px solid #8b0000;
+}
+
+.testimonial-card p{
+    color: #b8b8b8;
+
+    line-height: 1.8;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.contact-info{
+    flex: 1;
+}
+
+.contact-info p{
+    margin-bottom: 20px;
+
+    color: #b8b8b8;
+}
+
+.contact-form{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    background: #161616;
+
+    border: 1px solid #2a2a2a;
+
+    padding: 18px;
+
+    color: white;
+
+    outline: none;
+}
+
+.contact-form textarea{
+    min-height: 180px;
+}
+
+.contact-form button{
+    background: #8b0000;
+
+    border: none;
+
+    padding: 18px;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.contact-form button:hover{
+    background: #a40000;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align: center;
+
+    padding: 40px;
+
+    background: black;
+
+    border-top: 1px solid #1f1f1f;
+}
+
+footer p{
+    color: #777777;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 1000px){
+
+    .header{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-content h2{
+        font-size: 48px;
+    }
+
+    .about,
+    .fleet,
+    .contact{
+        flex-direction: column;
+    }
+
+    .about-image,
+    .fleet-image{
+        width: 100%;
+    }
+
+}
+
+
+/* ================= SHOWCASE VIDEO HOVER ================= */
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+}
+
+/* ensures video matches your image style */
+.hover-video {
+    width: 100%;
+    height: 320px; /* matches your showcase images */
+    object-fit: cover;
+
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* hover zoom effect (same feel as images) */
+.video-container:hover .hover-video {
+    transform: scale(1.08);
+}
+
+
+
+
+/* subtle dark overlay like hero style */
+.video-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    pointer-events: none;
+}
+
+
+
+.video-container:hover::before {
+    opacity: 1;
+}
+
+
+<script>
+const video = document.querySelector(".hover-video");
+const container = document.querySelector(".video-container");
+
+container.addEventListener("mouseenter", () => {
+    video.play();
+});
+
+container.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+});
+</script>
+
 
 <!-- ================= WHY CHOOSE US ================= -->
 
