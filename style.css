@@ -329,6 +329,7 @@ section h2{
     overflow: hidden;
     border-radius: 10px;
     height: 320px;
+    background: #000;
 }
 
 .hover-video {
@@ -341,38 +342,19 @@ section h2{
 
 /* DESKTOP: Hover to play video */
 @media(min-width: 1001px) {
-    .video-container:hover .hover-video {
-        transform: scale(1.05);
-    }
-    
-    .mobile-play-hint {
-        display: none !important;
-    }
-}
-
-/* MOBILE: Tap to play with native controls */
-@media(max-width: 1000px) {
-    .video-container {
+    .hover-video {
         cursor: pointer;
     }
     
+    .video-container:hover .hover-video {
+        transform: scale(1.05);
+    }
+}
+
+/* MOBILE: Show native controls */
+@media(max-width: 1000px) {
     .hover-video {
         height: 320px;
-    }
-    
-    .mobile-play-hint {
-        position: absolute;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(139, 0, 0, 0.9);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 5px;
-        font-size: 13px;
-        z-index: 10;
-        pointer-events: none;
-        font-weight: 600;
     }
 }
 
