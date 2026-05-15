@@ -30,6 +30,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+
+
+    <script>
+
+const scrollVideo = document.querySelector(".scroll-video");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            scrollVideo.play();
+
+        } else {
+
+            scrollVideo.pause();
+
+        }
+
+    });
+
+}, {
+    threshold: 0.5
+});
+
+observer.observe(scrollVideo);
+
+</script>
 <body>
 
 <!-- ================= NAVBAR ================= -->
