@@ -14,16 +14,20 @@
 
 </head>
 <script>
-const video = document.querySelector(".hover-video");
-const container = document.querySelector(".video-container");
+document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".hover-video");
+    const container = document.querySelector(".video-container");
 
-container.addEventListener("mouseenter", () => {
-    video.play();
-});
+    if (video && container) {
+        container.addEventListener("mouseenter", () => {
+            video.play();
+        });
 
-container.addEventListener("mouseleave", () => {
-    video.pause();
-    video.currentTime = 0;
+        container.addEventListener("mouseleave", () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    }
 });
 </script>
 <body>
@@ -245,10 +249,10 @@ container.addEventListener("mouseleave", () => {
         <!-- VIDEO HOVER BOX (NEW) -->
         <div class="showcase-box video-container">
 
-            <video class="hover-video" muted loop>
-                <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <video class="hover-video" muted playsinline>
+    <source src="whatsapp-video-2026-05-09.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
         </div>
 
