@@ -602,3 +602,34 @@ footer p{
 .video-container:hover .hover-video {
     transform: scale(1.05);
 }
+
+
+
+
+/* ================= DEVICE VIDEO VISIBILITY ================= */
+
+/* DESKTOP HOVER VIDEO */
+.video-container{
+    display: block;
+}
+
+/* MOBILE AUTOPLAY SECTION */
+.mobile-video-section{
+    display: none;
+}
+
+/* ================= MOBILE VIEW ================= */
+
+@media(max-width: 768px){
+
+    /* hide desktop hover video on phones */
+    .video-container{
+        display: none;
+    }
+
+    /* show mobile autoplay video */
+    .mobile-video-section{
+        display: block;
+    }
+
+}
