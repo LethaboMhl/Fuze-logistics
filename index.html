@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".video-container");
 
     if (video && container) {
+        // Desktop: Hover to play
         container.addEventListener("mouseenter", () => {
             video.play();
         });
@@ -27,38 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
             video.pause();
             video.currentTime = 0;
         });
+
+        // Mobile: Tap to play/pause
+        container.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
     }
 });
 </script>
 
-
-    <script>
-
-const scrollVideo = document.querySelector(".scroll-video");
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-
-            scrollVideo.play();
-
-        } else {
-
-            scrollVideo.pause();
-
-        }
-
-    });
-
-}, {
-    threshold: 0.5
-});
-
-observer.observe(scrollVideo);
-
-</script>
 <body>
 
 <!-- ================= NAVBAR ================= -->
@@ -275,13 +258,15 @@ observer.observe(scrollVideo);
             <img src="placeholder1.jpg" alt="Fleet Showcase">
         </div>
 
-        <!-- VIDEO HOVER BOX (NEW) -->
+        <!-- VIDEO HOVER BOX -->
         <div class="showcase-box video-container">
 
-            <video class="hover-video" muted playsinline>
-    <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+            <video class="hover-video" muted playsinline controls>
+                <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="mobile-play-hint">Tap to play</div>
 
         </div>
 
@@ -289,32 +274,6 @@ observer.observe(scrollVideo);
         <div class="showcase-box">
             <img src="placeholder3.jpg" alt="Fleet Showcase">
         </div>
-
-    </div>
-
-</section>
-
-
-    <!-- ================= MOBILE VIDEO SECTION ================= -->
-
-<section class="mobile-video-section">
-
-    <p class="section-tag">LIVE OPERATIONS</p>
-
-    <h2>Fleet Operations In Action</h2>
-
-    <div class="mobile-video-wrapper">
-
-        <video
-            class="scroll-video"
-            muted
-            playsinline
-            loop
-            preload="auto"
-        >
-            <source src="your-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
 
     </div>
 
