@@ -30,8 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 video.currentTime = 0;
             });
         } else {
-            // Mobile: Add controls attribute dynamically
-            video.controls = true;
+            // Mobile: Disable all controls
+            video.removeAttribute("controls");
+            video.addEventListener("click", (e) => {
+                e.preventDefault();
+                return false;
+            });
+            video.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                return false;
+            });
         }
     }
 });
