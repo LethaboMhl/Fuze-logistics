@@ -351,10 +351,35 @@ section h2{
     }
 }
 
-/* MOBILE: Show native controls */
+/* MOBILE: Hide all video controls */
 @media(max-width: 1000px) {
     .hover-video {
         height: 320px;
+    }
+
+    /* Hide play/pause display overlay */
+    .hover-video::-webkit-media-controls-panel {
+        display: none !important;
+    }
+
+    /* Hide big play button */
+    .hover-video::-webkit-media-controls-play-button {
+        display: none !important;
+    }
+
+    /* Hide timeline/progress bar */
+    .hover-video::-webkit-media-controls-timeline {
+        display: none !important;
+    }
+
+    /* Hide volume controls */
+    .hover-video::-webkit-media-controls-volume-slider {
+        display: none !important;
+    }
+
+    /* Firefox fallback */
+    .hover-video {
+        pointer-events: none;
     }
 }
 
