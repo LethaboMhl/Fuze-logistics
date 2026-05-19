@@ -14,27 +14,39 @@
 
 </head>
 <script>
-const video = document.querySelector(".hover-video");
-const container = document.querySelector(".video-container");
+document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".hover-video");
+    const container = document.querySelector(".video-container");
 
-if(window.innerWidth > 1000){
+    if (video && container) {
+        // Desktop: Hover to play/pause (only on desktop)
+        if (window.innerWidth > 1000) {
+            // Don't autoplay on desktop - only play on hover
+            container.addEventListener("mouseenter", () => {
+                video.play();
+            });
 
-    video.pause();
-
-    container.addEventListener("mouseenter", () => {
-        video.play();
-    });
-
-    container.addEventListener("mouseleave", () => {
-        video.pause();
-        video.currentTime = 0;
-    });
-
-}else{
-
-    video.play();
-
-}
+            container.addEventListener("mouseleave", () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        } else {
+            // Mobile: Auto-play and disable all controls
+            video.removeAttribute("controls");
+            video.muted = true;
+            video.autoplay = true;
+            video.play().catch(err => console.log("Autoplay prevented:", err));
+            video.addEventListener("click", (e) => {
+                e.preventDefault();
+                return false;
+            });
+            video.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                return false;
+            });
+        }
+    }
+});
 </script>
 
 <body>
@@ -258,7 +270,6 @@ if(window.innerWidth > 1000){
 
             <video
 class="hover-video"
-autoplay
 muted
 loop
 playsinline
