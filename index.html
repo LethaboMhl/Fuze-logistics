@@ -19,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".video-container");
 
     if (video && container) {
-        // Desktop: Hover to play/pause (only on desktop)
+        // Desktop: Hover to play/pause
         if (window.innerWidth > 1000) {
-            // Don't autoplay on desktop - only play on hover
             container.addEventListener("mouseenter", () => {
                 video.play();
             });
@@ -270,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <video
 class="hover-video"
+autoplay
 muted
 loop
 playsinline
