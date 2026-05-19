@@ -29,21 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 video.pause();
                 video.currentTime = 0;
             });
-        } else {
-            // Mobile: Auto-play and disable all controls
-            video.removeAttribute("controls");
-            video.muted = true;
-            video.autoplay = true;
-            video.play().catch(err => console.log("Autoplay prevented:", err));
-            video.addEventListener("click", (e) => {
-                e.preventDefault();
-                return false;
-            });
-            video.addEventListener("touchstart", (e) => {
-                e.preventDefault();
-                return false;
-            });
         }
+        // Mobile: Let autoplay attribute handle it naturally
     }
 });
 </script>
