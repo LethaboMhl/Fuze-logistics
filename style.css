@@ -306,6 +306,8 @@ section h2{
     border-radius: 10px;
 
     border: 1px solid #2a2a2a;
+
+    min-height: 320px;
 }
 
 .showcase-box img{
@@ -354,7 +356,7 @@ section h2{
 /* MOBILE: Hide all video controls */
 @media(max-width: 1000px) {
     .hover-video {
-        height: 320px;
+        height: 100%;
     }
 
     /* Hide play/pause display overlay */
@@ -570,10 +572,16 @@ section h2{
     color: white;
 
     outline: none;
+
+    border-radius: 5px;
+
+    font-size: 16px;
 }
 
 .contact-form textarea{
     min-height: 180px;
+
+    resize: vertical;
 }
 
 .contact-form button{
@@ -590,6 +598,8 @@ section h2{
     cursor: pointer;
 
     transition: 0.3s;
+
+    border-radius: 5px;
 }
 
 .contact-form button:hover{
@@ -616,29 +626,89 @@ footer p{
 
 @media(max-width: 1000px){
 
+    section{
+        padding: 80px 8%;
+    }
+
     .header{
         flex-direction: column;
         gap: 20px;
+        padding: 15px 8%;
+    }
+
+    .logo h1{
+        font-size: 16px;
+    }
+
+    .logo img{
+        height: 35px;
     }
 
     nav{
         flex-wrap: wrap;
         justify-content: center;
+        gap: 15px;
+    }
+
+    nav a{
+        font-size: 13px;
     }
 
     .hero-content h2{
-        font-size: 48px;
+        font-size: 32px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p{
+        font-size: 16px;
+    }
+
+    section h2{
+        font-size: 32px;
     }
 
     .about,
     .fleet,
     .contact{
         flex-direction: column;
+        gap: 40px;
     }
 
     .about-image,
     .fleet-image{
         width: 100%;
+    }
+
+    .service-grid,
+    .why-grid,
+    .area-grid,
+    .partner-grid,
+    .testimonial-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .showcase-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .showcase-box{
+        min-height: 300px;
+    }
+
+    .showcase-box img,
+    .hover-video{
+        height: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    .contact-form button{
+        padding: 16px;
     }
 
 }
