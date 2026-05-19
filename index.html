@@ -14,38 +14,27 @@
 
 </head>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const video = document.querySelector(".hover-video");
-    const container = document.querySelector(".video-container");
+const video = document.querySelector(".hover-video");
+const container = document.querySelector(".video-container");
 
-    if (video && container) {
-        // Desktop: Hover to play/pause
-        if (window.innerWidth > 1000) {
-            container.addEventListener("mouseenter", () => {
-                video.play();
-            });
+if(window.innerWidth > 1000){
 
-            container.addEventListener("mouseleave", () => {
-                video.pause();
-                video.currentTime = 0;
-            });
-        } else {
-            // Mobile: Auto-play and disable all controls
-            video.removeAttribute("controls");
-            video.muted = true;
-            video.autoplay = true;
-            video.play().catch(err => console.log("Autoplay prevented:", err));
-            video.addEventListener("click", (e) => {
-                e.preventDefault();
-                return false;
-            });
-            video.addEventListener("touchstart", (e) => {
-                e.preventDefault();
-                return false;
-            });
-        }
-    }
-});
+    video.pause();
+
+    container.addEventListener("mouseenter", () => {
+        video.play();
+    });
+
+    container.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+    });
+
+}else{
+
+    video.play();
+
+}
 </script>
 
 <body>
@@ -267,17 +256,18 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- VIDEO HOVER BOX -->
         <div class="showcase-box video-container">
 
-            <video 
+            <video
 class="hover-video"
 autoplay
 muted
-playsinline
 loop
+playsinline
+webkit-playsinline
+disablepictureinpicture
 preload="auto"
 >
     <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
 </video>
-
         </div>
 
         <!-- IMAGE 3 -->
