@@ -32,7 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // Mobile: Auto-play and disable all controls
             video.removeAttribute("controls");
+            video.muted = true;
             video.autoplay = true;
+            video.play().catch(err => console.log("Autoplay prevented:", err));
             video.addEventListener("click", (e) => {
                 e.preventDefault();
                 return false;
