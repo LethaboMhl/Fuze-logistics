@@ -251,7 +251,7 @@ section h2{
 
 /* ================= FLEET ================= */
 
-.fleet{ display: grid; align-items: center; justify-content: space-between; gap: 80px; background: #111111; } 
+.fleet{ display: grid; justify-content: space-between; gap: 80px; background: #111111; } 
 .fleet-text{ flex: 1; } 
 .fleet-text p{ color: #b8b8b8; line-height: 1.8; margin-bottom: 20px; } 
 .fleet-text ul{ margin-top: 25px; } 
