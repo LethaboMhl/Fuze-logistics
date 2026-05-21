@@ -311,7 +311,7 @@ section h2{
 }
 
 .showcase-box{
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 16;
     overflow: hidden;
     border-radius: 10px;
 }
