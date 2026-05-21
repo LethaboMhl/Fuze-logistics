@@ -611,25 +611,26 @@ footer p{
     position: fixed;
     top: 50%;
     right: 20px;
-    border-radius: 12px 12px 12px 0;
-    backgroundcolor:red;
 
     transform: translateY(-50%);
 
-    background: #4CAF50;
-    color: white;
+    background: #8b0000; /* red */
+    color: #ffffff;
 
-    padding: 12px 18px;
+    padding: 14px 20px;
     border-radius: 12px;
 
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 
     z-index: 9999;
 
-    animation: fadeInOut 3s ease forwards;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .message-popup::after {
     content: "";
@@ -637,8 +638,17 @@ footer p{
     top: 50%;
     right: -8px;
     transform: translateY(-50%);
-    
+
     border-width: 8px 0 8px 8px;
     border-style: solid;
-    border-color: transparent transparent transparent #4CAF50;
+    border-color: transparent transparent transparent #8b0000;
+}
+.message-popup.show {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+.contact-form button:disabled {
+    background: #444;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
