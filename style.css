@@ -311,9 +311,12 @@ section h2{
 }
 
 .showcase-box{
-    aspect-ratio: 16 / 16;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    position: relative;
 }
 
 .showcase-box img{
@@ -350,9 +353,7 @@ section h2{
 
 .video-container {
     aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 10px;
-    background: black;
+    
 }
 
 
