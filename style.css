@@ -295,6 +295,20 @@ section h2{
     border: 2px solid #8b0000;
 }
 
+
+
+.fleet-image2{
+    flex: 1;
+}
+
+.fleet-image2 img{
+    width: 100%;
+
+    border-radius: 10px;
+
+    border: 2px solid #8b0000;
+}
+
 /* ================= SHOWCASE ================= */
 
 .showcase{
