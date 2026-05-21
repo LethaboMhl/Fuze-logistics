@@ -311,13 +311,9 @@ section h2{
 }
 
 .showcase-box{
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-
     border-radius: 10px;
-
-    border: 1px solid #2a2a2a;
-
-    min-height: 320px;
 }
 
 .showcase-box img{
@@ -336,7 +332,7 @@ section h2{
 
 .hover-video{
     width: 100%;
-    height: 320px;
+    height: 100%;
     object-fit: cover;
     display: block;
 
@@ -353,11 +349,10 @@ section h2{
 /* ================= VIDEO CONTAINER ================= */
 
 .video-container {
-    position: relative;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 10px;
-    height: 320px;
-    background: #000;
+    background: black;
 }
 
 
