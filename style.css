@@ -815,3 +815,13 @@ footer p{
     }
 }
 
+@media (max-width: 600px)
+{ 
+    .hero-content h2{ font-size: 34px; } 
+    section h2{ font-size: 30px; } 
+    nav{ gap: 10px; } 
+    nav a{ font-size: 14px; } 
+    .stats{ grid-template-columns: 1fr; } 
+    .contact-form input, .contact-form textarea{ font-size: 15px; } 
+}
+
