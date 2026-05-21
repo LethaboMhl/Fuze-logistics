@@ -765,8 +765,8 @@ footer p{
 
     .fleet-image img,
     .fleet-image2 img{
-        height: 320px;
-        width: 220px;
+        height: 260px;
+        width: 100%;
         object-fit: cover;}
 
     /* GRID FIXES */
