@@ -352,7 +352,7 @@ section h2{
     position: relative; 
     overflow: hidden; 
     border-radius: 10px; 
-    height: 320px; 
+    height: 100%; 
     background: #000;
 }
 
