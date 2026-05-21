@@ -546,6 +546,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.querySelector(".hover-video");
 
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // autoplay blocked — try again on interaction
+                document.addEventListener("touchstart", () => {
+                    video.play();
+                }, { once: true });
+            });
+        }
+    };
+
+    playVideo();
+});
+</script>
 </body>
 </html>
