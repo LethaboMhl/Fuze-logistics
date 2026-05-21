@@ -252,15 +252,15 @@ section h2{
 /* ================= FLEET ================= */
 
 .fleet{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 60px;
-    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    align-items: flex-start;
     background: #111111;
 }
 
 .fleet-text{
-    grid-row: 1 / 3;
+flex: 1;
 }
 
 .fleet-text p{
