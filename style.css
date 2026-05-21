@@ -326,7 +326,7 @@ section h2{
 
     object-fit: cover;
 
-    transition: 0.4s;
+    transition: 0.1s;
 }
 
 .showcase-box:hover img{
@@ -352,8 +352,11 @@ section h2{
 /* ================= VIDEO CONTAINER ================= */
 
 .video-container {
-    aspect-ratio: 16 / 9;
-    
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 10px; 
+    height: 320px; 
+    background: #000;
 }
 
 
