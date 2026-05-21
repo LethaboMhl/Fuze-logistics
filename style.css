@@ -679,6 +679,9 @@ footer p{
         text-align: center;
     }
 
+    .contact-info p:nth-of-type(3){
+    color: #ffffff;
+
     nav{
         flex-wrap: wrap;
         justify-content: center;
