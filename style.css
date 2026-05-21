@@ -524,6 +524,15 @@ section h2{
 
 /* ================= CONTACT ================= */
 
+
+.contact-info p{
+    color: #b8b8b8;
+}
+
+.contact-info p:nth-child(3){
+    color: #ffffff;
+    font-weight: 600;
+}
 .contact{
     display: flex;
     justify-content: space-between;
