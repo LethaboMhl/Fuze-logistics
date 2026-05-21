@@ -279,16 +279,16 @@ section h2{
 }
 
 .fleet-image img{
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid #8b0000;
-    display: block;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 .fleet-image2 img{
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid #8b0000;
-    display: block;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 /* ================= SHOWCASE ================= */
