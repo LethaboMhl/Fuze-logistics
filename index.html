@@ -556,26 +556,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     videos.forEach(video => {
 
-         video.setAttribute("muted", "");
-    video.setAttribute("playsinline", "");
-
-        // Required for mobile autoplay
         video.muted = true;
+        video.defaultMuted = true;
         video.autoplay = true;
         video.loop = true;
         video.playsInline = true;
 
-        // Force play attempt
-        const playPromise = video.play();
+        video.setAttribute("muted", "");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("playsinline", "");
 
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // Retry when user interacts with page
-                document.addEventListener("click", () => {
-                    video.play();
-                }, { once: true });
-            });
-        }
+        video.play().catch(() => {});
 
     });
 
