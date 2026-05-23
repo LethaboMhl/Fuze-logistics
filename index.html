@@ -566,35 +566,29 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const videos = document.querySelectorAll(".hover-video");
+    const videos = document.querySelectorAll(".hover-video, .hover-video2");
 
     videos.forEach(video => {
 
         video.muted = true;
-        video.defaultMuted = true;
         video.playsInline = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
 
-        const attemptPlay = () => {
-            video.play().catch(() => {});
+        const playVideo = () => {
+            const playPromise = video.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+
+                    // retry on first touch if autoplay blocked
+                    document.addEventListener("touchstart", () => {
+                        video.play();
+                    }, { once: true });
+
+                });
+            }
         };
 
-        attemptPlay();
-
-        // retry when visible on mobile
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
-            });
-        }, { threshold: 0.3 });
-
-        observer.observe(video);
+        playVideo();
     });
 
 });
