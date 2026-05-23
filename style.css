@@ -293,6 +293,16 @@ section h2{
     position: relative;
 }
 
+.showcase-box2{
+    width: 100%;
+    hight: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    position: relative;
+}
+
+
 .showcase-box img{
     width: 100%;
 
@@ -343,6 +353,13 @@ section h2{
     background: #000;
 }
 
+.video-container2 {
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 10px; 
+    height: 320px; 
+    background: #000;
+}
 
 
 /* DESKTOP: Hover to play video */
