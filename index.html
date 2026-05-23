@@ -234,18 +234,11 @@
         <!-- VIDEO HOVER BOX -->
         <div class="showcase-box video-container">
 
-            <video
-class="hover-video"
-autoplay
-muted
-loop
-playsinline
-webkit-playsinline
-disablepictureinpicture
-preload="auto"
->
+            <video autoplay muted loop playsinline>
     <source src="WhatsApp Video 2026-05-09 at 23.03.42.mp4" type="video/mp4">
 </video>
+
+            
         </div>
 
  <!-- IMAGE 1 -->
@@ -256,18 +249,11 @@ preload="auto"
         <!-- IMAGE 3 -->
   <div class="showcase-box video-container">
 
-            <video
-class="hover-video2"
-autoplay
-muted
-loop
-playsinline
-webkit-playsinline
-disablepictureinpicture
-preload="auto"
->
+      <video autoplay muted loop playsinline>
     <source src="WhatsApp Video 2026-05-21 at 10.35.21 - Trim.mp4" type="video/mp4">
-</video>      
+</video>
+
+               
         
 
     </div>
@@ -564,31 +550,30 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const videos = document.querySelectorAll(".hover-video");
+    const videos = document.querySelectorAll("video");
 
     videos.forEach(video => {
 
+        // Required for mobile autoplay
         video.muted = true;
+        video.autoplay = true;
+        video.loop = true;
         video.playsInline = true;
 
-        const playVideo = () => {
-            const playPromise = video.play();
+        // Force play attempt
+        const playPromise = video.play();
 
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Retry when user interacts with page
+                document.addEventListener("click", () => {
+                    video.play();
+                }, { once: true });
+            });
+        }
 
-                    // retry on first touch if autoplay blocked
-                    document.addEventListener("touchstart", () => {
-                        video.play();
-                    }, { once: true });
-
-                });
-            }
-        };
-
-        playVideo();
     });
 
 });
