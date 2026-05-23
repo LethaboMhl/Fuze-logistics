@@ -9,7 +9,7 @@ video{
     box-sizing: border-box;
 }
 
-img, video{
+img{
     width: 100%;
     height: 100px;         /* controls desktop size */
     object-fit: cover;     /* prevents stretching */
@@ -796,6 +796,9 @@ footer p{
         height: 260px;
         object-fit: cover;
     }
+    .video-container video{
+    height: 260px;
+}
 }
 
 @media (max-width: 600px){
