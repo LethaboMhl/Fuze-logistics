@@ -565,27 +565,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const video = document.querySelector(".hover-video, .hover-video2");
 
-    if (!video) return;
+    const videos = document.querySelectorAll(".hover-video");
 
-    video.muted = true;
-    video.playsInline = true;
+    videos.forEach(video => {
 
-    const playVideo = () => {
-        const playPromise = video.play();
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
 
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // autoplay blocked — try again on interaction
-                document.addEventListener("touchstart", () => {
-                    video.play();
-                }, { once: true });
+        const attemptPlay = () => {
+            video.play().catch(() => {});
+        };
+
+        attemptPlay();
+
+        // retry when visible on mobile
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
             });
-        }
-    };
+        }, { threshold: 0.3 });
 
-    playVideo();
+        observer.observe(video);
+    });
+
 });
 </script>
 </body>
