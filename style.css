@@ -8,10 +8,7 @@ video{ background: #000; } /* ================= GLOBAL ================= */ *{ m
 /* ================= MOBILE FIXES ================= */ @media (max-width: 768px){ html, body{ width: 100%; overflow-x: hidden; } /* FIX INVALID GLOBAL MEDIA BEHAVIOR */ img, { width: 100%; height: auto; display: block; object-fit: cover; } /* HEADER FIX */ .header{ flex-direction: column; align-items: center; justify-content: center; padding: 14px 16px; gap: 12px; text-align: center; } .logo h1{ font-size: 16px; max-width: 260px; } nav{ flex-wrap: wrap; justify-content: center; gap: 10px; } nav a{ font-size: 13px; } .quote-btn{ padding: 10px 14px; font-size: 14px; } /* HERO FIX */ .hero{ height: 100vh; background-position: center; } .hero-content{ left: 0; width: 100%; padding: 0 20px; text-align: left; } .hero-content h2{ font-size: 32px; line-height: 1.2; } .hero-content p{ font-size: 15px; }                  /* SECTION SPACING */ 
 section{ padding: 80px 20px; } section h2{ font-size: 32px; } /* ABOUT / CONTACT STACK FIX */ .about, .contact{ flex-direction: column; gap: 30px; } /* FLEET FIX (IMPORTANT) */ .fleet{ display: flex; flex-direction: column; gap: 15px; } .fleet-text{ order: 1; } .fleet-image{ order: 2; } .fleet-image2{ order: 3; } .fleet-image img, .fleet-image2 img{ height: 260px; width: 100%; object-fit: cover;} /* GRID FIXES */ .service-grid, .showcase-grid, .why-grid, .area-grid, .partner-grid, .testimonial-grid, .stats{ grid-template-columns: 1fr; } /* SHOWCASE VIDEO FIX */ .video-container, .showcase-box img, .hover-video, .hover-video2{ height: 260px; object-fit: cover; } } @media (max-width: 600px){ .hero-content h2{ font-size: 28px; } section h2{ font-size: 26px; } nav a{ font-size: 13px; } .contact-form input, .contact-form textarea{ font-size: 15px; } 
 }
-.phone-number p[href^="tel:"]{
-    color: rgba(0,0,0,0.92) !important; /* dark red */
-    font-weight: 600;
-}
+
 @media (max-width: 768px){
 
     .contact-info a[href^="tel:"]{
