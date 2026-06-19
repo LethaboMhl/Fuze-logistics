@@ -288,7 +288,6 @@
 
     <!-- ================= THANK YOU POPUP (SINGLE INSTANCE) ================= -->
     <div class="message-popup" id="messagePopup">
-        <span class="icon">✅</span>
         <span id="popupMessage">Thank you! We'll be in touch soon.</span>
         <button class="close-btn" id="closePopup">✕</button>
     </div>
@@ -333,12 +332,12 @@
                         throw new Error("Submission failed");
                     }
 
-                    popupMessage.textContent = "✅ Message Sent Successfully!";
+                    popupMessage.textContent = " Message Sent Successfully!";
                     popup.classList.add("show");
                     form.reset();
 
                 } catch (error) {
-                    popupMessage.textContent = "❌ Something went wrong. Try again.";
+                    popupMessage.textContent = " Something went wrong. Try again.";
                     popup.classList.add("show");
                     console.error(error);
                 }
