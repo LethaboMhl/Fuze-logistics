@@ -419,8 +419,61 @@
             });
 
         });
-    </script>
 
+        // Add this to your HTML file or a separate JS file
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.contact-form');
+  const popup = document.querySelector('.message-popup');
+  const closeBtn = document.querySelector('.message-popup .close-btn');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
+  if (form && popup) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent actual form submission for demo
+      
+      // Show popup
+      popup.classList.add('show');
+      
+      // Disable button
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+      
+      // Simulate sending (remove this in production)
+      setTimeout(function() {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      }, 3000);
+    });
+  }
+
+  // Close popup when close button is clicked
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      popup.classList.remove('show');
+    });
+  }
+
+  // Close popup when clicking outside (optional)
+  if (popup) {
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) {
+        popup.classList.remove('show');
+      }
+    });
+  }
+});
+    </script>
+    
+<!-- Thank You Popup -->
+<div class="message-popup">
+  <span class="icon">✅</span>
+  <span>Thank you! We'll be in touch soon.</span>
+  <button class="close-btn">✕</button>
+</div>
 </body>
 
 </html>
