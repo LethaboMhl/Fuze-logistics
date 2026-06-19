@@ -588,11 +588,7 @@ footer p {
     }
 }
 
-/* Small icon/emoji inside popup */
-.message-popup .icon {
-    font-size: 24px;
-    line-height: 1;
-}
+
 
 /* Close button */
 .message-popup .close-btn {
