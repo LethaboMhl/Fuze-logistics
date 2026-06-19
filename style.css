@@ -16,7 +16,7 @@ section{ padding: 80px 20px; } section h2{ font-size: 32px; } /* ABOUT / CONTACT
     }
 
 
-    .thankyou-popup {
+    .message-popup {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -41,14 +41,14 @@ section{ padding: 80px 20px; } section h2{ font-size: 32px; } /* ABOUT / CONTACT
 }
 
 /* Popup visible state */
-.thankyou-popup.show {
+.message-popup.show {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
 /* Optional: subtle pulse on appearance */
-.thankyou-popup.show {
+.message-popup.show {
   animation: popPulse 0.6s ease 0.3s;
 }
 
@@ -61,7 +61,7 @@ section{ padding: 80px 20px; } section h2{ font-size: 32px; } /* ABOUT / CONTACT
 
     /* Mobile adjustments */
 @media (max-width: 600px) {
-  .thankyou-popup {
+  .message-popup {
     bottom: 20px;
     right: 20px;
     left: 20px;
@@ -69,7 +69,7 @@ section{ padding: 80px 20px; } section h2{ font-size: 32px; } /* ABOUT / CONTACT
     font-size: 14px;
     border-radius: 10px;
   }
-  .thankyou-popup .icon {
+  .message-popup .icon {
     font-size: 20px;
   }
 }
