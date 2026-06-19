@@ -11,6 +11,111 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <!-- Map Styles -->
+    <style>
+        .map-section {
+            padding: 60px 8%;
+            background: #0d0d0d;
+        }
+        
+        .map-wrapper {
+            background: linear-gradient(145deg, #111111, #1a1a1a);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid #2a2a2a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .map-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(139, 0, 0, 0.03) 0%, transparent 70%);
+            animation: rotateBg 60s linear infinite;
+        }
+
+        .location-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .location-item:hover {
+            background: rgba(139, 0, 0, 0.1);
+            border-color: #8b0000;
+            transform: translateY(-3px);
+        }
+
+        .location-item.highlight {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .location-item .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #8b0000;
+            margin-right: 8px;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        .location-item .dot-gold {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffd700;
+            margin-right: 8px;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        .location-item .dot:nth-child(2) { animation-delay: 0.3s; }
+        .location-item .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        .location-item .name {
+            color: #f5f5f5;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .location-item .sub {
+            color: #888;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .map-wrapper {
+                padding: 20px;
+            }
+            .map-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
 
 </head>
 
@@ -29,6 +134,7 @@
             <a href="#services">Services</a>
             <a href="#fleet">Fleet</a>
             <a href="#projects">Projects</a>
+            <a href="#map">Map</a>
             <a href="#contact">Contact</a>
             <a href="#contact" class="quote-btn">Get Quote</a>
         </nav>
@@ -189,7 +295,6 @@
     </section>
 
     <!-- ================= OPERATING AREAS ================= -->
-    
     <section class="areas" id="areas">
         <p class="section-tag">OPERATING REGIONS</p>
         <h2>Areas We Operate In</h2>
@@ -201,317 +306,38 @@
 
     <!-- ================= INTERACTIVE MAP ================= -->
     <section class="map-section" id="map">
-        <!-- PASTE THE MAP HTML HERE -->
-        <!-- ================= INTERACTIVE MAP ================= -->
-<section class="map-section" id="map" style="padding:60px 8%;background:#0d0d0d;">
-    <div class="map-wrapper" style="background:linear-gradient(145deg,#111111,#1a1a1a);border-radius:24px;padding:40px;max-width:1000px;width:100%;margin:0 auto;border:1px solid #2a2a2a;position:relative;overflow:hidden;">
-        
-        <!-- Map Header -->
-        <div style="text-align:center;margin-bottom:30px;position:relative;z-index:1;">
-            <span style="color:#8b0000;font-weight:600;letter-spacing:3px;font-size:13px;text-transform:uppercase;display:inline-block;padding:4px 16px;border:1px solid #8b0000;border-radius:20px;">📍 Operating Regions</span>
-            <h2 style="font-family:'Poppins',sans-serif;font-size:34px;margin-top:12px;background:linear-gradient(135deg,#ffffff 60%,#8b0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Our Key Locations</h2>
-            <p style="color:#888;font-size:15px;margin-top:8px;">Strategic operations across South Africa's mining & industrial hubs</p>
-        </div>
-
-        <!-- Map Canvas -->
-        <div style="position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #2a2a2a;background:#0a0a0a;">
-            <canvas id="mapCanvas" width="900" height="700" style="width:100%;height:auto;display:block;"></canvas>
-        </div>
-
-        <!-- Location List -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-top:25px;position:relative;z-index:1;">
-            <div style="background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:10px;border:1px solid #ffd700;text-align:center;transition:all 0.3s;cursor:pointer;background:rgba(255,215,0,0.05);">
-                <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ffd700;margin-right:8px;animation:dotPulse 2s ease-in-out infinite;"></span>
-                <span style="color:#f5f5f5;font-weight:600;font-size:14px;">Gauteng</span>
-                <div style="color:#888;font-size:12px;margin-top:2px;">★ Headquarters</div>
+        <div class="map-wrapper">
+            <!-- Map Header -->
+            <div style="text-align:center;margin-bottom:30px;position:relative;z-index:1;">
+                <span style="color:#8b0000;font-weight:600;letter-spacing:3px;font-size:13px;text-transform:uppercase;display:inline-block;padding:4px 16px;border:1px solid #8b0000;border-radius:20px;">📍 Operating Regions</span>
+                <h2 style="font-family:'Poppins',sans-serif;font-size:34px;margin-top:12px;background:linear-gradient(135deg,#ffffff 60%,#8b0000);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Our Key Locations</h2>
+                <p style="color:#888;font-size:15px;margin-top:8px;">Strategic operations across South Africa's mining & industrial hubs</p>
             </div>
-            <div style="background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:10px;border:1px solid #2a2a2a;text-align:center;transition:all 0.3s;cursor:pointer;">
-                <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#8b0000;margin-right:8px;animation:dotPulse 2s ease-in-out infinite;animation-delay:0.3s;"></span>
-                <span style="color:#f5f5f5;font-weight:600;font-size:14px;">North West</span>
-                <div style="color:#888;font-size:12px;margin-top:2px;">Bulk Mining Operations</div>
+
+            <!-- Map Canvas -->
+            <div style="position:relative;z-index:1;border-radius:16px;overflow:hidden;border:1px solid #2a2a2a;background:#0a0a0a;">
+                <canvas id="mapCanvas" width="900" height="700" style="width:100%;height:auto;display:block;"></canvas>
             </div>
-            <div style="background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:10px;border:1px solid #2a2a2a;text-align:center;transition:all 0.3s;cursor:pointer;">
-                <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#8b0000;margin-right:8px;animation:dotPulse 2s ease-in-out infinite;animation-delay:0.6s;"></span>
-                <span style="color:#f5f5f5;font-weight:600;font-size:14px;">Mpumalanga</span>
-                <div style="color:#888;font-size:12px;margin-top:2px;">Coal & Aggregate Hauling</div>
+
+            <!-- Location List -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-top:25px;position:relative;z-index:1;">
+                <div class="location-item highlight">
+                    <span class="dot-gold"></span>
+                    <span class="name">Gauteng</span>
+                    <div class="sub">★ Headquarters</div>
+                </div>
+                <div class="location-item">
+                    <span class="dot"></span>
+                    <span class="name">North West</span>
+                    <div class="sub">Bulk Mining Operations</div>
+                </div>
+                <div class="location-item">
+                    <span class="dot"></span>
+                    <span class="name">Mpumalanga</span>
+                    <div class="sub">Coal & Aggregate Hauling</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Map JavaScript -->
-<script>
-    const canvas = document.getElementById('mapCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Province boundaries
-    const provinces = {
-        gauteng: {
-            path: [
-                [410, 380], [430, 375], [450, 370], [470, 375], 
-                [480, 390], [475, 410], [460, 420], [440, 425],
-                [420, 420], [410, 405], [400, 395]
-            ],
-            color: 'rgba(255, 215, 0, 0.15)',
-            stroke: '#ffd700'
-        },
-        northWest: {
-            path: [
-                [250, 290], [280, 280], [310, 270], [340, 275],
-                [360, 285], [370, 300], [380, 315], [385, 330],
-                [380, 345], [370, 355], [350, 365], [330, 370],
-                [310, 365], [290, 355], [270, 340], [260, 325],
-                [250, 310]
-            ],
-            color: 'rgba(139, 0, 0, 0.15)',
-            stroke: '#8b0000'
-        },
-        mpumalanga: {
-            path: [
-                [470, 180], [500, 170], [530, 165], [560, 170],
-                [580, 180], [590, 195], [595, 210], [590, 225],
-                [580, 240], [565, 250], [550, 255], [535, 250],
-                [520, 240], [510, 225], [500, 210], [490, 200],
-                [480, 190]
-            ],
-            color: 'rgba(139, 0, 0, 0.15)',
-            stroke: '#8b0000'
-        }
-    };
-
-    // Location markers
-    const locations = [
-    {
-        x: 470,
-        y: 315,
-        name: 'Gauteng',
-        sub: '★ Headquarters',
-        color: '#ffd700',
-        isHQ: true
-    },
-    {
-        x: 340,
-        y: 320,
-        name: 'North West',
-        sub: 'Bulk Mining Operations',
-        color: '#8b0000',
-        isHQ: false
-    },
-    {
-        x: 610,
-        y: 280,
-        name: 'Mpumalanga',
-        sub: 'Coal & Aggregate Hauling',
-        color: '#8b0000',
-        isHQ: false
-    }
-];
-
-    let time = 0;
-
-function drawSouthAfricaOutline() {
-    ctx.beginPath();
-
-    ctx.moveTo(170,120);
-
-    ctx.bezierCurveTo(130,160,110,220,115,290);
-    ctx.bezierCurveTo(120,360,150,430,200,490);
-    ctx.bezierCurveTo(250,550,330,585,430,590);
-    ctx.bezierCurveTo(520,595,610,560,670,500);
-    ctx.bezierCurveTo(730,440,760,360,745,280);
-    ctx.bezierCurveTo(730,210,690,150,620,115);
-    ctx.bezierCurveTo(550,80,460,65,370,70);
-    ctx.bezierCurveTo(290,75,220,90,170,120);
-
-    ctx.closePath();
-
-    const fillGrad = ctx.createLinearGradient(0,0,800,600);
-    fillGrad.addColorStop(0,'rgba(20,20,20,0.95)');
-    fillGrad.addColorStop(1,'rgba(35,35,35,0.95)');
-
-    ctx.fillStyle = fillGrad;
-    ctx.fill();
-
-    ctx.strokeStyle = '#444';
-    ctx.lineWidth = 3;
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.ellipse(470,410,35,45,0,0,Math.PI*2);
-    ctx.strokeStyle='rgba(255,255,255,0.15)';
-    ctx.lineWidth=1.5;
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.ellipse(625,285,18,25,0,0,Math.PI*2);
-    ctx.stroke();
-
-    ctx.shadowBlur = 30;
-    ctx.shadowColor = 'rgba(139,0,0,0.25)';
-    ctx.strokeStyle = '#8b0000';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-}
-
-    function drawProvinces() {
-        Object.keys(provinces).forEach(key => {
-            const prov = provinces[key];
-            ctx.beginPath();
-            ctx.moveTo(prov.path[0][0], prov.path[0][1]);
-            for (let i = 1; i < prov.path.length; i++) {
-                ctx.lineTo(prov.path[i][0], prov.path[i][1]);
-            }
-            ctx.closePath();
-            ctx.fillStyle = prov.color;
-            ctx.fill();
-            ctx.strokeStyle = prov.stroke;
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = prov.stroke;
-            ctx.stroke();
-            ctx.shadowBlur = 0;
-        });
-    }
-
-    function drawLocations() {
-        locations.forEach((loc, i) => {
-            const pulseSize = 12 + 8 * Math.sin(time / 1000 + i * 1.5);
-            const glowColor = loc.isHQ ? 'rgba(255, 215, 0, ' : 'rgba(139, 0, 0, ';
-            const glow = ctx.createRadialGradient(loc.x, loc.y, 0, loc.x, loc.y, pulseSize * 3);
-            glow.addColorStop(0, glowColor + '0.2)');
-            glow.addColorStop(1, glowColor + '0)');
-            ctx.fillStyle = glow;
-            ctx.beginPath();
-            ctx.arc(loc.x, loc.y, pulseSize * 3, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(loc.x, loc.y, pulseSize, 0, Math.PI * 2);
-            ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.5)' : 'rgba(139, 0, 0, 0.5)';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-
-            const pulseSize2 = pulseSize * 0.6 + 5 * Math.sin(time / 800 + i);
-            ctx.beginPath();
-            ctx.arc(loc.x, loc.y, pulseSize2, 0, Math.PI * 2);
-            ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.2)' : 'rgba(139, 0, 0, 0.2)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            const radius = loc.isHQ ? 10 : 8;
-            ctx.beginPath();
-            ctx.arc(loc.x, loc.y, radius, 0, Math.PI * 2);
-            const grad = ctx.createRadialGradient(loc.x - 2, loc.y - 2, 0, loc.x, loc.y, radius);
-            grad.addColorStop(0, loc.isHQ ? '#ffd700' : '#cc0000');
-            grad.addColorStop(1, loc.color);
-            ctx.fillStyle = grad;
-            ctx.fill();
-            ctx.strokeStyle = '#fff';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.arc(loc.x - 1, loc.y - 1, radius * 0.4, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255,255,255,0.4)';
-            ctx.fill();
-
-            if (loc.isHQ) {
-                ctx.fillStyle = '#fff';
-                ctx.font = '12px Arial';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText('★', loc.x, loc.y + 1);
-            }
-
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = 'rgba(0,0,0,0.95)';
-            ctx.fillStyle = loc.isHQ ? '#ffd700' : '#f5f5f5';
-            ctx.font = loc.isHQ ? 'bold 16px Inter, sans-serif' : 'bold 15px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'bottom';
-            ctx.fillText(loc.name, loc.x, loc.y - 22);
-
-            const hoverOpacity = 0.5 + 0.3 * Math.sin(time / 2000 + i);
-            ctx.fillStyle = `rgba(184, 184, 184, ${hoverOpacity})`;
-            ctx.font = '12px Inter, sans-serif';
-            ctx.textBaseline = 'top';
-            ctx.fillText(loc.sub, loc.x, loc.y + 20);
-            ctx.shadowBlur = 0;
-
-            // Connection lines
-            if (i < locations.length - 1) {
-                for (let j = i + 1; j < locations.length; j++) {
-                    const to = locations[j];
-                    ctx.strokeStyle = `rgba(139, 0, 0, ${0.15 + 0.15 * Math.sin(time / 1000 + i + j)})`;
-                    ctx.lineWidth = 1.5;
-                    ctx.setLineDash([8, 8]);
-                    ctx.lineDashOffset = -time / 2;
-                    ctx.beginPath();
-                    ctx.moveTo(loc.x, loc.y);
-                    ctx.lineTo(to.x, to.y);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-
-                    const progress = (time / 4000 + i * 0.1 + j * 0.1) % 1;
-                    const px = loc.x + (to.x - loc.x) * progress;
-                    const py = loc.y + (to.y - loc.y) * progress;
-                    ctx.beginPath();
-                    ctx.arc(px, py, 3, 0, Math.PI * 2);
-                    ctx.fillStyle = loc.isHQ ? '#ffd700' : '#8b0000';
-                    ctx.fill();
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = loc.isHQ ? '#ffd700' : '#8b0000';
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                }
-            }
-        });
-    }
-
-    function drawMap() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const grad = ctx.createRadialGradient(450, 350, 50, 450, 350, 500);
-        grad.addColorStop(0, '#1a1a1a');
-        grad.addColorStop(1, '#0a0a0a');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = 'rgba(255,255,255,0.02)';
-        for (let i = 0; i < 60; i++) {
-            const x = (i * 37 + 13) % canvas.width;
-            const y = (i * 53 + 7) % canvas.height;
-            ctx.beginPath();
-            ctx.arc(x, y, 1, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        drawSouthAfricaOutline();
-        drawProvinces();
-        drawLocations();
-
-ctx.fillStyle = 'rgba(255,255,255,0.03)';
-ctx.font = 'bold 60px Poppins, sans-serif';
-ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
-ctx.fillText('SOUTH AFRICA', 450, 350);
-        time += 16;
-        requestAnimationFrame(drawMap);
-    }
-
-    drawMap();
-
-    // Animation keyframes for dots
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes dotPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.7); }
-        }
-    `;
-    document.head.appendChild(style);
-</script>
     </section>
 
     <!-- ================= STATISTICS ================= -->
@@ -598,12 +424,271 @@ ctx.fillText('SOUTH AFRICA', 450, 350);
         <p>© 2026 FUZE HOLDINGS & LOGISTICS (PTY) LTD</p>
     </footer>
 
-    <!-- ================= THANK YOU POPUP (SINGLE INSTANCE) ================= -->
+    <!-- ================= THANK YOU POPUP ================= -->
     <div class="message-popup" id="messagePopup">
         <span id="popupMessage">Thank you! We'll be in touch soon.</span>
         <button class="close-btn" id="closePopup">✕</button>
     </div>
 
+    <!-- ================= MAP JAVASCRIPT ================= -->
+    <script>
+        const canvas = document.getElementById('mapCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Province boundaries (adjusted for the new map)
+        const provinces = {
+            gauteng: {
+                path: [
+                    [410, 380], [430, 375], [450, 370], [470, 375], 
+                    [480, 390], [475, 410], [460, 420], [440, 425],
+                    [420, 420], [410, 405], [400, 395]
+                ],
+                color: 'rgba(255, 215, 0, 0.15)',
+                stroke: '#ffd700'
+            },
+            northWest: {
+                path: [
+                    [250, 290], [280, 280], [310, 270], [340, 275],
+                    [360, 285], [370, 300], [380, 315], [385, 330],
+                    [380, 345], [370, 355], [350, 365], [330, 370],
+                    [310, 365], [290, 355], [270, 340], [260, 325],
+                    [250, 310]
+                ],
+                color: 'rgba(139, 0, 0, 0.15)',
+                stroke: '#8b0000'
+            },
+            mpumalanga: {
+                path: [
+                    [470, 180], [500, 170], [530, 165], [560, 170],
+                    [580, 180], [590, 195], [595, 210], [590, 225],
+                    [580, 240], [565, 250], [550, 255], [535, 250],
+                    [520, 240], [510, 225], [500, 210], [490, 200],
+                    [480, 190]
+                ],
+                color: 'rgba(139, 0, 0, 0.15)',
+                stroke: '#8b0000'
+            }
+        };
+
+        // Location markers
+        const locations = [
+            { x: 440, y: 395, name: 'Gauteng', sub: '★ Headquarters', color: '#ffd700', isHQ: true },
+            { x: 315, y: 325, name: 'North West', sub: 'Bulk Mining Operations', color: '#8b0000', isHQ: false },
+            { x: 530, y: 210, name: 'Mpumalanga', sub: 'Coal & Aggregate Hauling', color: '#8b0000', isHQ: false }
+        ];
+
+        let time = 0;
+
+        function drawSouthAfricaOutline() {
+            ctx.beginPath();
+            ctx.moveTo(180, 80);
+            ctx.quadraticCurveTo(200, 60, 230, 50);
+            ctx.quadraticCurveTo(260, 45, 290, 50);
+            ctx.quadraticCurveTo(320, 55, 350, 60);
+            ctx.quadraticCurveTo(380, 65, 410, 70);
+            ctx.quadraticCurveTo(440, 75, 470, 80);
+            ctx.quadraticCurveTo(500, 85, 530, 95);
+            ctx.quadraticCurveTo(560, 105, 585, 120);
+            ctx.quadraticCurveTo(610, 135, 630, 155);
+            ctx.quadraticCurveTo(650, 175, 665, 200);
+            ctx.quadraticCurveTo(680, 225, 690, 255);
+            ctx.quadraticCurveTo(700, 285, 705, 315);
+            ctx.quadraticCurveTo(710, 345, 705, 375);
+            ctx.quadraticCurveTo(700, 405, 685, 430);
+            ctx.quadraticCurveTo(670, 455, 650, 475);
+            ctx.quadraticCurveTo(630, 495, 605, 510);
+            ctx.quadraticCurveTo(580, 525, 555, 535);
+            ctx.quadraticCurveTo(530, 545, 500, 550);
+            ctx.quadraticCurveTo(470, 555, 440, 558);
+            ctx.quadraticCurveTo(410, 560, 380, 562);
+            ctx.quadraticCurveTo(350, 564, 320, 566);
+            ctx.quadraticCurveTo(290, 568, 260, 570);
+            ctx.quadraticCurveTo(230, 572, 200, 575);
+            ctx.quadraticCurveTo(170, 578, 140, 580);
+            ctx.quadraticCurveTo(110, 582, 85, 575);
+            ctx.quadraticCurveTo(60, 568, 50, 545);
+            ctx.quadraticCurveTo(40, 522, 38, 495);
+            ctx.quadraticCurveTo(36, 468, 36, 440);
+            ctx.quadraticCurveTo(36, 412, 38, 385);
+            ctx.quadraticCurveTo(40, 358, 42, 330);
+            ctx.quadraticCurveTo(44, 302, 46, 275);
+            ctx.quadraticCurveTo(48, 248, 55, 225);
+            ctx.quadraticCurveTo(62, 202, 75, 180);
+            ctx.quadraticCurveTo(88, 158, 105, 140);
+            ctx.quadraticCurveTo(122, 122, 142, 108);
+            ctx.quadraticCurveTo(162, 94, 180, 80);
+            ctx.closePath();
+            
+            ctx.fillStyle = 'rgba(20, 20, 20, 0.9)';
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Neighboring countries
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 8]);
+            ctx.beginPath();
+            ctx.ellipse(550, 430, 40, 50, 0, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.ellipse(630, 320, 25, 30, 0, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+
+        function drawProvinces() {
+            Object.keys(provinces).forEach(key => {
+                const prov = provinces[key];
+                ctx.beginPath();
+                ctx.moveTo(prov.path[0][0], prov.path[0][1]);
+                for (let i = 1; i < prov.path.length; i++) {
+                    ctx.lineTo(prov.path[i][0], prov.path[i][1]);
+                }
+                ctx.closePath();
+                ctx.fillStyle = prov.color;
+                ctx.fill();
+                ctx.strokeStyle = prov.stroke;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = prov.stroke;
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            });
+        }
+
+        function drawLocations() {
+            locations.forEach((loc, i) => {
+                const pulseSize = 12 + 8 * Math.sin(time / 1000 + i * 1.5);
+                const glowColor = loc.isHQ ? 'rgba(255, 215, 0, ' : 'rgba(139, 0, 0, ';
+                const glow = ctx.createRadialGradient(loc.x, loc.y, 0, loc.x, loc.y, pulseSize * 3);
+                glow.addColorStop(0, glowColor + '0.2)');
+                glow.addColorStop(1, glowColor + '0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(loc.x, loc.y, pulseSize * 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(loc.x, loc.y, pulseSize, 0, Math.PI * 2);
+                ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.5)' : 'rgba(139, 0, 0, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                const pulseSize2 = pulseSize * 0.6 + 5 * Math.sin(time / 800 + i);
+                ctx.beginPath();
+                ctx.arc(loc.x, loc.y, pulseSize2, 0, Math.PI * 2);
+                ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.2)' : 'rgba(139, 0, 0, 0.2)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                const radius = loc.isHQ ? 10 : 8;
+                ctx.beginPath();
+                ctx.arc(loc.x, loc.y, radius, 0, Math.PI * 2);
+                const grad = ctx.createRadialGradient(loc.x - 2, loc.y - 2, 0, loc.x, loc.y, radius);
+                grad.addColorStop(0, loc.isHQ ? '#ffd700' : '#cc0000');
+                grad.addColorStop(1, loc.color);
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(loc.x - 1, loc.y - 1, radius * 0.4, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.fill();
+
+                if (loc.isHQ) {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '12px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('★', loc.x, loc.y + 1);
+                }
+
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = 'rgba(0,0,0,0.95)';
+                ctx.fillStyle = loc.isHQ ? '#ffd700' : '#f5f5f5';
+                ctx.font = loc.isHQ ? 'bold 16px Inter, sans-serif' : 'bold 15px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText(loc.name, loc.x, loc.y - 22);
+
+                const hoverOpacity = 0.5 + 0.3 * Math.sin(time / 2000 + i);
+                ctx.fillStyle = `rgba(184, 184, 184, ${hoverOpacity})`;
+                ctx.font = '12px Inter, sans-serif';
+                ctx.textBaseline = 'top';
+                ctx.fillText(loc.sub, loc.x, loc.y + 20);
+                ctx.shadowBlur = 0;
+
+                // Connection lines
+                if (i < locations.length - 1) {
+                    for (let j = i + 1; j < locations.length; j++) {
+                        const to = locations[j];
+                        ctx.strokeStyle = `rgba(139, 0, 0, ${0.15 + 0.15 * Math.sin(time / 1000 + i + j)})`;
+                        ctx.lineWidth = 1.5;
+                        ctx.setLineDash([8, 8]);
+                        ctx.lineDashOffset = -time / 2;
+                        ctx.beginPath();
+                        ctx.moveTo(loc.x, loc.y);
+                        ctx.lineTo(to.x, to.y);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+
+                        const progress = (time / 4000 + i * 0.1 + j * 0.1) % 1;
+                        const px = loc.x + (to.x - loc.x) * progress;
+                        const py = loc.y + (to.y - loc.y) * progress;
+                        ctx.beginPath();
+                        ctx.arc(px, py, 3, 0, Math.PI * 2);
+                        ctx.fillStyle = loc.isHQ ? '#ffd700' : '#8b0000';
+                        ctx.fill();
+                        ctx.shadowBlur = 15;
+                        ctx.shadowColor = loc.isHQ ? '#ffd700' : '#8b0000';
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                }
+            });
+        }
+
+        function drawMap() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const grad = ctx.createRadialGradient(450, 350, 50, 450, 350, 500);
+            grad.addColorStop(0, '#1a1a1a');
+            grad.addColorStop(1, '#0a0a0a');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'rgba(255,255,255,0.02)';
+            for (let i = 0; i < 60; i++) {
+                const x = (i * 37 + 13) % canvas.width;
+                const y = (i * 53 + 7) % canvas.height;
+                ctx.beginPath();
+                ctx.arc(x, y, 1, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            drawSouthAfricaOutline();
+            drawProvinces();
+            drawLocations();
+
+            ctx.fillStyle = 'rgba(255,255,255,0.015)';
+            ctx.font = 'bold 80px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('SOUTH AFRICA', 450, 350);
+
+            time += 16;
+            requestAnimationFrame(drawMap);
+        }
+
+        drawMap();
+    </script>
+
+    <!-- ================= FORM JAVASCRIPT ================= -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const form = document.getElementById("contactForm");
@@ -612,12 +697,10 @@ ctx.fillText('SOUTH AFRICA', 450, 350);
             const closeBtn = document.getElementById("closePopup");
             const button = form.querySelector("button");
 
-            // Close popup when X is clicked
             closeBtn.addEventListener("click", function() {
                 popup.classList.remove("show");
             });
 
-            // Close popup when clicking outside
             popup.addEventListener("click", function(e) {
                 if (e.target === popup) {
                     popup.classList.remove("show");
@@ -626,7 +709,6 @@ ctx.fillText('SOUTH AFRICA', 450, 350);
 
             form.addEventListener("submit", async function(e) {
                 e.preventDefault();
-                console.log("Form submitted");
 
                 button.disabled = true;
                 const originalText = button.textContent;
@@ -644,12 +726,12 @@ ctx.fillText('SOUTH AFRICA', 450, 350);
                         throw new Error("Submission failed");
                     }
 
-                    popupMessage.textContent = " Message Sent Successfully!";
+                    popupMessage.textContent = "✅ Message Sent Successfully!";
                     popup.classList.add("show");
                     form.reset();
 
                 } catch (error) {
-                    popupMessage.textContent = " Something went wrong. Try again.";
+                    popupMessage.textContent = "❌ Something went wrong. Try again.";
                     popup.classList.add("show");
                     console.error(error);
                 }
@@ -661,274 +743,7 @@ ctx.fillText('SOUTH AFRICA', 450, 350);
                 }, 5000);
             });
         });
-
-        const canvas = document.getElementById('mapCanvas');
-const ctx = canvas.getContext('2d');
-
-// Province boundaries
-const provinces = {
-    gauteng: {
-        path: [
-            [410, 380], [430, 375], [450, 370], [470, 375], 
-            [480, 390], [475, 410], [460, 420], [440, 425],
-            [420, 420], [410, 405], [400, 395]
-        ],
-        color: 'rgba(255, 215, 0, 0.15)',
-        stroke: '#ffd700'
-    },
-    northWest: {
-        path: [
-            [250, 290], [280, 280], [310, 270], [340, 275],
-            [360, 285], [370, 300], [380, 315], [385, 330],
-            [380, 345], [370, 355], [350, 365], [330, 370],
-            [310, 365], [290, 355], [270, 340], [260, 325],
-            [250, 310]
-        ],
-        color: 'rgba(139, 0, 0, 0.15)',
-        stroke: '#8b0000'
-    },
-    mpumalanga: {
-        path: [
-            [470, 180], [500, 170], [530, 165], [560, 170],
-            [580, 180], [590, 195], [595, 210], [590, 225],
-            [580, 240], [565, 250], [550, 255], [535, 250],
-            [520, 240], [510, 225], [500, 210], [490, 200],
-            [480, 190]
-        ],
-        color: 'rgba(139, 0, 0, 0.15)',
-        stroke: '#8b0000'
-    }
-};
-
-// Location markers
-const locations = [
-    { x: 440, y: 395, name: 'Gauteng', sub: '★ Headquarters', color: '#ffd700', isHQ: true },
-    { x: 315, y: 325, name: 'North West', sub: 'Bulk Mining Operations', color: '#8b0000', isHQ: false },
-    { x: 530, y: 210, name: 'Mpumalanga', sub: 'Coal & Aggregate Hauling', color: '#8b0000', isHQ: false }
-];
-
-let time = 0;
-
-function drawSouthAfricaOutline() {
-    ctx.beginPath();
-    ctx.moveTo(180, 80);
-    ctx.quadraticCurveTo(200, 60, 230, 50);
-    ctx.quadraticCurveTo(260, 45, 290, 50);
-    ctx.quadraticCurveTo(320, 55, 350, 60);
-    ctx.quadraticCurveTo(380, 65, 410, 70);
-    ctx.quadraticCurveTo(440, 75, 470, 80);
-    ctx.quadraticCurveTo(500, 85, 530, 95);
-    ctx.quadraticCurveTo(560, 105, 585, 120);
-    ctx.quadraticCurveTo(610, 135, 630, 155);
-    ctx.quadraticCurveTo(650, 175, 665, 200);
-    ctx.quadraticCurveTo(680, 225, 690, 255);
-    ctx.quadraticCurveTo(700, 285, 705, 315);
-    ctx.quadraticCurveTo(710, 345, 705, 375);
-    ctx.quadraticCurveTo(700, 405, 685, 430);
-    ctx.quadraticCurveTo(670, 455, 650, 475);
-    ctx.quadraticCurveTo(630, 495, 605, 510);
-    ctx.quadraticCurveTo(580, 525, 555, 535);
-    ctx.quadraticCurveTo(530, 545, 500, 550);
-    ctx.quadraticCurveTo(470, 555, 440, 558);
-    ctx.quadraticCurveTo(410, 560, 380, 562);
-    ctx.quadraticCurveTo(350, 564, 320, 566);
-    ctx.quadraticCurveTo(290, 568, 260, 570);
-    ctx.quadraticCurveTo(230, 572, 200, 575);
-    ctx.quadraticCurveTo(170, 578, 140, 580);
-    ctx.quadraticCurveTo(110, 582, 85, 575);
-    ctx.quadraticCurveTo(60, 568, 50, 545);
-    ctx.quadraticCurveTo(40, 522, 38, 495);
-    ctx.quadraticCurveTo(36, 468, 36, 440);
-    ctx.quadraticCurveTo(36, 412, 38, 385);
-    ctx.quadraticCurveTo(40, 358, 42, 330);
-    ctx.quadraticCurveTo(44, 302, 46, 275);
-    ctx.quadraticCurveTo(48, 248, 55, 225);
-    ctx.quadraticCurveTo(62, 202, 75, 180);
-    ctx.quadraticCurveTo(88, 158, 105, 140);
-    ctx.quadraticCurveTo(122, 122, 142, 108);
-    ctx.quadraticCurveTo(162, 94, 180, 80);
-    ctx.closePath();
-    
-    ctx.fillStyle = 'rgba(20, 20, 20, 0.9)';
-    ctx.fill();
-    ctx.strokeStyle = '#333';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Neighboring countries (Lesotho & Eswatini)
-    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 8]);
-    ctx.beginPath();
-    ctx.ellipse(550, 430, 40, 50, 0, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.ellipse(630, 320, 25, 30, 0, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.setLineDash([]);
-}
-
-function drawProvinces() {
-    Object.keys(provinces).forEach(key => {
-        const prov = provinces[key];
-        ctx.beginPath();
-        ctx.moveTo(prov.path[0][0], prov.path[0][1]);
-        for (let i = 1; i < prov.path.length; i++) {
-            ctx.lineTo(prov.path[i][0], prov.path[i][1]);
-        }
-        ctx.closePath();
-        ctx.fillStyle = prov.color;
-        ctx.fill();
-        ctx.strokeStyle = prov.stroke;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = prov.stroke;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-    });
-}
-
-function drawLocations() {
-    locations.forEach((loc, i) => {
-        const pulseSize = 12 + 8 * Math.sin(time / 1000 + i * 1.5);
-        const glowColor = loc.isHQ ? 'rgba(255, 215, 0, ' : 'rgba(139, 0, 0, ';
-        const glow = ctx.createRadialGradient(loc.x, loc.y, 0, loc.x, loc.y, pulseSize * 3);
-        glow.addColorStop(0, glowColor + '0.2)');
-        glow.addColorStop(1, glowColor + '0)');
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(loc.x, loc.y, pulseSize * 3, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(loc.x, loc.y, pulseSize, 0, Math.PI * 2);
-        ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.5)' : 'rgba(139, 0, 0, 0.5)';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        const pulseSize2 = pulseSize * 0.6 + 5 * Math.sin(time / 800 + i);
-        ctx.beginPath();
-        ctx.arc(loc.x, loc.y, pulseSize2, 0, Math.PI * 2);
-        ctx.strokeStyle = loc.isHQ ? 'rgba(255, 215, 0, 0.2)' : 'rgba(139, 0, 0, 0.2)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        const radius = loc.isHQ ? 10 : 8;
-        ctx.beginPath();
-        ctx.arc(loc.x, loc.y, radius, 0, Math.PI * 2);
-        const grad = ctx.createRadialGradient(loc.x - 2, loc.y - 2, 0, loc.x, loc.y, radius);
-        grad.addColorStop(0, loc.isHQ ? '#ffd700' : '#cc0000');
-        grad.addColorStop(1, loc.color);
-        ctx.fillStyle = grad;
-        ctx.fill();
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(loc.x - 1, loc.y - 1, radius * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,0.4)';
-        ctx.fill();
-
-        if (loc.isHQ) {
-            ctx.fillStyle = '#fff';
-            ctx.font = '12px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('★', loc.x, loc.y + 1);
-        }
-
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = 'rgba(0,0,0,0.95)';
-        ctx.fillStyle = loc.isHQ ? '#ffd700' : '#f5f5f5';
-        ctx.font = loc.isHQ ? 'bold 16px Inter, sans-serif' : 'bold 15px Inter, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-        ctx.fillText(loc.name, loc.x, loc.y - 22);
-
-        const hoverOpacity = 0.5 + 0.3 * Math.sin(time / 2000 + i);
-        ctx.fillStyle = `rgba(184, 184, 184, ${hoverOpacity})`;
-        ctx.font = '12px Inter, sans-serif';
-        ctx.textBaseline = 'top';
-        ctx.fillText(loc.sub, loc.x, loc.y + 20);
-        ctx.shadowBlur = 0;
-
-        // Connection lines between locations
-        if (i < locations.length - 1) {
-            for (let j = i + 1; j < locations.length; j++) {
-                const to = locations[j];
-                ctx.strokeStyle = `rgba(139, 0, 0, ${0.15 + 0.15 * Math.sin(time / 1000 + i + j)})`;
-                ctx.lineWidth = 1.5;
-                ctx.setLineDash([8, 8]);
-                ctx.lineDashOffset = -time / 2;
-                ctx.beginPath();
-                ctx.moveTo(loc.x, loc.y);
-                ctx.lineTo(to.x, to.y);
-                ctx.stroke();
-                ctx.setLineDash([]);
-
-                const progress = (time / 4000 + i * 0.1 + j * 0.1) % 1;
-                const px = loc.x + (to.x - loc.x) * progress;
-                const py = loc.y + (to.y - loc.y) * progress;
-                ctx.beginPath();
-                ctx.arc(px, py, 3, 0, Math.PI * 2);
-                ctx.fillStyle = loc.isHQ ? '#ffd700' : '#8b0000';
-                ctx.fill();
-                ctx.shadowBlur = 15;
-                ctx.shadowColor = loc.isHQ ? '#ffd700' : '#8b0000';
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
-    });
-}
-
-function drawMap() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const grad = ctx.createRadialGradient(450, 350, 50, 450, 350, 500);
-    grad.addColorStop(0, '#1a1a1a');
-    grad.addColorStop(1, '#0a0a0a');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = 'rgba(255,255,255,0.02)';
-    for (let i = 0; i < 60; i++) {
-        const x = (i * 37 + 13) % canvas.width;
-        const y = (i * 53 + 7) % canvas.height;
-        ctx.beginPath();
-        ctx.arc(x, y, 1, 0, Math.PI * 2);
-        ctx.fill();
-    }
-
-    drawSouthAfricaOutline();
-    drawProvinces();
-    drawLocations();
-
-    ctx.fillStyle = 'rgba(255,255,255,0.015)';
-    ctx.font = 'bold 80px Inter, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('SOUTH AFRICA', 450, 350);
-
-    time += 16;
-    requestAnimationFrame(drawMap);
-}
-
-drawMap();
-
-// Animation keyframes for dots
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes dotPulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.3; transform: scale(0.7); }
-    }
-`;
-document.head.appendChild(style);
     </script>
-    
 
 </body>
-
 </html>
