@@ -63,37 +63,41 @@
                 transform: scale(1);
             }
             50% { 
-                transform: scale(1.008);
+                transform: scale(1.015);
             }
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { 
-                r: 18;
-                opacity: 0.12;
-            }
-            50% { 
-                r: 22;
-                opacity: 0.06;
-            }
-        }
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0.4);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
 
         .key-pin {
-            animation: pulseKey 1s  infinite;
+            animation: pulseKey 1s  infinite ease-in-out;
             transform-origin: center;
         }
 
         .key-pin-gold {
-            animation: pulseKey 1s  infinite;
+            animation: pulseKey 1s  infinite ease-in-out;
             transform-origin: center;
         }
 
         .glow-ring {
-            animation: pulseGlow 1s  infinite;
+            animation: pulseGlow 1s  infinite ease-in-out;
         }
 
         .glow-ring-gold {
-            animation: pulseGlow 1s  infinite;
+            animation: pulseGlow 1s  infinite ease-in-out;
         }
 
         /* Tooltip */
