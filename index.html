@@ -61,27 +61,37 @@
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
         }
 
-        /* Province path styles - matching FUZE color scheme */
+        /* Province path styles - FILL ONLY, NO BORDER */
         .province-path {
-            transition: fill 0.2s ease, stroke-width 0.2s, stroke 0.2s;
+            transition: all 0.3s ease;
             cursor: pointer;
             vector-effect: non-scaling-stroke;
         }
+
         .province-path.default {
             fill: rgba(255, 255, 255, 0.04);
             stroke: rgba(255, 255, 255, 0.08);
             stroke-width: 1;
         }
+
         .province-path.default:hover {
             fill: rgba(255, 255, 255, 0.12);
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 2;
+            filter: brightness(1.3);
         }
+
         .province-path.highlighted {
             fill: rgba(139, 0, 0, 0.15);
-            stroke: #8b0000;
-            stroke-width: 1.5;
+            stroke: none;
+            stroke-width: 0;
         }
+
         .province-path.highlighted:hover {
             fill: rgba(139, 0, 0, 0.25);
+            stroke: #8b0000;
+            stroke-width: 2;
+            filter: brightness(1.2);
         }
 
         /* Tooltip – card style matching FUZE theme */
@@ -144,7 +154,7 @@
         }
         .legend-swatch.highlight {
             background: rgba(139, 0, 0, 0.2);
-            border-color: #8b0000;
+            border-color: rgba(139, 0, 0, 0.2);
         }
         .legend-swatch.default {
             background: rgba(255, 255, 255, 0.04);
